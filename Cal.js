@@ -19,20 +19,21 @@ console.log(subtract(8,4))
 
 let firstNum;
 let secondNum;
+let x;
 let operatives = [add,subtract,multiply,divide]
-function isOperative(operation){
-    if(operatives.includes(operation)){
-        return operation;
+function isOperative(operative){
+    if(operatives.includes(operative)){
+        return operative;
     }
     else{
         return false
     }};
 
-function operate(firstNum,operative,secondNum){
-    operative = isOperative(operative)
-    return operative(firstNum, secondNum);    
-}ssssssssssssssssssssss
-console.log(operate(1,add,5))
+function operate(firstNum,operation,secondNum){
+    operation = isOperative(operation)
+    return operation(firstNum, secondNum);    
+}
+console.log(operate(1,add,x))
 
 /// My alternative plan was to append an anonymous reduce function
 /// so that operation doesn't have to take any implicit arguments
@@ -88,48 +89,48 @@ numberedButtons.addEventListener("click",  (event) => {
 })
 
 
-
-
+let Value, Value2;
 
 function getFValue(){
     let Value;
     Value = Display.textContent
     Display.textContent = ""
+    Value = parseInt(Value)
     console.log(Value)
-    return parseInt(Value)
+    return Value
 }
 function getSValue(){
-    let Value2;
     Value2 = Display.textContent
     Display.textContent = ""
+    Value2 = parseInt(Value2)
     console.log(Value2)
-    return parseInt(Value2)
+    return Value2
 }
+let Operation;
 
 let symbolButtons = document.querySelector("div#Symbols")
 symbolButtons.addEventListener("click",  (event) => {
-    let finalOperation;
     let target = event.target;
     switch(target.id){
         case "Plus":
-            Number(getFValue())
-            finalOperation = add
+            x = parseInt(getFValue());
+            Operation = add;
             break;
         case "Minus":
-            Number(getFValue())
-            finalOperation = subtract
+            parseInt(getFValue())
+            Operation = subtract;
             break;
         case "Divide":
-            Number(getFValue())
-            finalOperation = divide
+            parseInt(getFValue())
+            Operation = divide;
             break;
         case 'Multiply':
-            Number(getFValue())
-            finalOperation = multiply
+            parseInt(getFValue())
+            Operation = multiply;
             break;
         case "Equal":
-            Number(getSValue())
-            x = operate(getFValue, finalOperation, getSValue)
-            console.log(x)
+            parseInt(getSValue())
+            console.log(isOperative(Operation))
+            operate((Value,Operation,Value2))
             break;
     }});
