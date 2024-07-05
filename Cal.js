@@ -36,16 +36,54 @@ console.log(operate(1,add,5))
 /// so that operation doesn't have to take any implicit arguments
 
 console.log(operate(5,multiply,5))
-HTMLDisplay = document.querySelector("#Display")
+
+
+Display = document.querySelector("#Display")
+Display.textContent += 45533
 
 function updateDisplay(number){
-        HTMLDisplay.textContent += number
+        Display.textContent += number
 }
-btn1 = document.querySelector("#Numbers #one")
-btn5 = document.querySelector("#Numbers #five")
-btn5.addEventListener("Click", updateDisplay(5))
-btn1.addEventListener("click", updateDisplay(1))
+function clearDisplay(){
+    Display.textContent = ""
+}
+clearDisplay()
 
-    numberedButtons = document.querySelector("#Numbers > div")
-    ///numberedButtons.forEach(button);{
-    ///button.addEventListener("click", updateDisplay
+let numberedButtons = document.querySelector("div#Numbers")
+numberedButtons.addEventListener("click",  (event) => {
+    let target = event.target;
+    switch(target.id){
+        case "zero":
+            updateDisplay(0)
+            break;
+        case "one":
+            updateDisplay(1);
+            break;
+        case "two":
+            updateDisplay(2);
+            break;
+        case 'three':
+            updateDisplay(3);
+            break;
+        case "four":
+            updateDisplay(4);
+            break;
+        case "five":
+            updateDisplay(5)
+            break;
+        case "six":
+            updateDisplay(6);
+            break;
+        case "seven":
+            updateDisplay(7);
+            break;
+        case 'eight':
+            updateDisplay(8);
+            break;
+        case "nine":
+            updateDisplay(9);
+            break;
+            
+
+    }
+})
