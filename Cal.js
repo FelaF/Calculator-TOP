@@ -23,13 +23,15 @@ let operatives = [add,subtract,multiply,divide]
 function isOperative(operation){
     if(operatives.includes(operation)){
         return operation;
+    }
+    else{
+        return false
     }};
 
 function operate(firstNum,operative,secondNum){
     operative = isOperative(operative)
     return operative(firstNum, secondNum);    
-}
-
+}ssssssssssssssssssssss
 console.log(operate(1,add,5))
 
 /// My alternative plan was to append an anonymous reduce function
@@ -39,7 +41,6 @@ console.log(operate(5,multiply,5))
 
 
 Display = document.querySelector("#Display")
-Display.textContent += 45533
 
 function updateDisplay(number){
         Display.textContent += number
@@ -47,8 +48,8 @@ function updateDisplay(number){
 function clearDisplay(){
     Display.textContent = ""
 }
-clearDisplay()
-
+let clearButton = document.querySelector("div#Symbols #Clear")
+clearButton.addEventListener("click", clearDisplay)
 let numberedButtons = document.querySelector("div#Numbers")
 numberedButtons.addEventListener("click",  (event) => {
     let target = event.target;
@@ -83,7 +84,52 @@ numberedButtons.addEventListener("click",  (event) => {
         case "nine":
             updateDisplay(9);
             break;
-            
-
     }
 })
+
+
+
+
+
+function getFValue(){
+    let Value;
+    Value = Display.textContent
+    Display.textContent = ""
+    console.log(Value)
+    return parseInt(Value)
+}
+function getSValue(){
+    let Value2;
+    Value2 = Display.textContent
+    Display.textContent = ""
+    console.log(Value2)
+    return parseInt(Value2)
+}
+
+let symbolButtons = document.querySelector("div#Symbols")
+symbolButtons.addEventListener("click",  (event) => {
+    let finalOperation;
+    let target = event.target;
+    switch(target.id){
+        case "Plus":
+            Number(getFValue())
+            finalOperation = add
+            break;
+        case "Minus":
+            Number(getFValue())
+            finalOperation = subtract
+            break;
+        case "Divide":
+            Number(getFValue())
+            finalOperation = divide
+            break;
+        case 'Multiply':
+            Number(getFValue())
+            finalOperation = multiply
+            break;
+        case "Equal":
+            Number(getSValue())
+            x = operate(getFValue, finalOperation, getSValue)
+            console.log(x)
+            break;
+    }});
