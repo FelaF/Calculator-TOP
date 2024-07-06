@@ -19,19 +19,20 @@ console.log(subtract(8,4))
 
 let firstNum;
 let secondNum;
-let x;
+let x = 2;
 let operatives = [add,subtract,multiply,divide]
 function isOperative(operative){
     if(operatives.includes(operative)){
         return operative;
     }
     else{
-        return false
+        console.log("What")
     }};
 
 function operate(firstNum,operation,secondNum){
     operation = isOperative(operation)
-    return operation(firstNum, secondNum);    
+
+    { return operation(firstNum, secondNum); }  
 }
 console.log(operate(1,add,x))
 
@@ -105,32 +106,33 @@ function getSValue(){
     Value2 = parseInt(Value2)
     console.log(Value2)
     return Value2
+
 }
-let Operation;
+let Cheese,y,z;
 
 let symbolButtons = document.querySelector("div#Symbols")
 symbolButtons.addEventListener("click",  (event) => {
     let target = event.target;
     switch(target.id){
         case "Plus":
-            x = parseInt(getFValue());
-            Operation = add;
+            y = parseInt(getFValue());
+            Cheese = add;
             break;
         case "Minus":
-            parseInt(getFValue())
-            Operation = subtract;
+            y = parseInt(getFValue())
+            Cheese = subtract;
             break;
         case "Divide":
-            parseInt(getFValue())
-            Operation = divide;
+            y = parseInt(getFValue())
+            Cheese = divide;
             break;
         case 'Multiply':
-            parseInt(getFValue())
-            Operation = multiply;
+            y = parseInt(getFValue())
+            Cheese = multiply;
             break;
         case "Equal":
-            parseInt(getSValue())
-            console.log(isOperative(Operation))
-            operate((Value,Operation,Value2))
+            z = parseInt(getSValue())
+            console.log(isOperative(Cheese))
+            return operate((y,Cheese,z))
             break;
     }});
